@@ -101,7 +101,7 @@ Historically there are several issues related to this problem:
 
 - Environment variable support in kubelet for services of type `ExternalName` other than the master service. Related [comment](https://github.com/kubernetes/kubernetes/issues/60535#issuecomment-490757630).
 - In-cluster API server detection/auto-configuration other than environment variables named `KUBERNETES_SERVICE_HOST` and `KUBERNETES_SERVICE_PORT`.
-- Network connectivity from Nodes/Pods to the kube-server is out of scope it's assumend to be properly configured and working. Pods using the hostnetwork or CNI network are able to initiate connections to kube-apiserver.
+- Network connectivity from Nodes/Pods to the kube-server is out of scope and is assumed to be properly configured and working. Pods using the hostnetwork or CNI network are able to initiate connections to kube-apiserver.
 
 ## Proposal
 
@@ -270,6 +270,7 @@ Major milestones might include
 
 ## Alternatives
 
+- continue using IP advertised apiservers.
 - an alternative would be to use TLS passthrough proxies (such as HAProxy or Envoy) and update the master service to include a selector to those workloads:
 
   ```yaml
