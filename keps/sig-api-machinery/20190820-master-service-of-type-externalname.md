@@ -94,7 +94,7 @@ Historically there are several issues related to this problem:
 ### Goals
 
 - Make kube-servers exposed and advertised as FQDN, first class citizen in Kubernetes.
-- Add an additional reconciler in kube-apiserver for master kubernetes service of type `ExternalName`.
+- The master service reconciler in kube-apiserver should support services of type `ExternalName`.
 - Support in kubelet for injecting the required environment variables `KUBERNETES_SERVICE_HOST` and `KUBERNETES_SERVICE_PORT` for [in-cluster discovery](https://github.com/kubernetes/client-go/blob/c8dc69f8a8bf8d8640493ce26688b26c7bfde8e6/rest/config.go#L399-L411) for master kubernetes service of type `ExternalName`.
 
 ### Non-Goals
@@ -109,7 +109,7 @@ In order to support this feature in Kubernetes the following changes are propose
 
 ### Kube-apiserver
 
-An additional reconciler to be introduced in kube-apiserver.
+The master service reconciler in kube-apiserver is extended to support services of type `ExternalName`.
 
 Example:
 
